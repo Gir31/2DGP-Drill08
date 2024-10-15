@@ -1,5 +1,7 @@
 from pico2d import load_image
 
+from state_machine import StateMachine
+
 
 class Boy:
     def __init__(self):
@@ -8,6 +10,8 @@ class Boy:
         self.dir = 0
         self.action = 3
         self.image = load_image('animation_sheet.png')
+        self.state_machine = StateMachine() # 소년 객체의 state machine 생성
+        self.state_machine.start()
 
     def update(self):
         self.frame = (self.frame + 1) % 8
