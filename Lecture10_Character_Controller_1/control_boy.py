@@ -1,19 +1,9 @@
 from pico2d import *
-import random
+
+from Lecture10_Character_Controller_1.grass import Grass
 
 
 # Game object class here
-
-class Grass:
-    def __init__(self):
-        self.image = load_image('grass.png')
-
-    def draw(self):
-        self.image.draw(400, 30)
-
-    def update(self):
-        pass
-
 
 class Boy:
     def __init__(self):
