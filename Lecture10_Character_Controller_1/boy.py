@@ -1,6 +1,7 @@
 from pico2d import load_image, get_time
 
-from Lecture10_Character_Controller_1.state_machine import left_down, right_up, left_up, right_down, start_event
+from Lecture10_Character_Controller_1.state_machine import left_down, right_up, left_up, right_down, start_event, \
+    a_key_down
 from state_machine import StateMachine, time_out, space_down
 
 
@@ -102,6 +103,7 @@ class AutoRun:
 
     @staticmethod
     def do(boy):
+        boy.frame = (boy.frame + 1) % 8
         pass
 
     @staticmethod
@@ -123,8 +125,9 @@ class Boy:
         self.state_machine.set_transitions(
             {
                 Run : { right_down : Idle, left_down : Idle, right_up : Idle, left_up : Idle},
-                Idle : { right_down : Run, left_down : Run, right_up : Run, left_up : Run, time_out : Sleep },
-                Sleep : { right_down : Run, left_down : Run, right_up : Run, left_up : Run, space_down : Idle }
+                Idle : { right_down : Run, left_down : Run, right_up : Run, left_up : Run, time_out : Sleep, a_key_down : AutoRun},
+                Sleep : { right_down : Run, left_down : Run, right_up : Run, left_up : Run, space_down : Idle },
+                AutoRun : {}
             }
         )
 
