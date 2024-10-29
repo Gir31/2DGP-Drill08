@@ -117,9 +117,13 @@ class AutoRun:
     @staticmethod
     def do(boy):
         boy.frame = (boy.frame + 1) % 8
-        boy.x += boy.dir * 3
+        boy.x += boy.dir * 10
+
         if touch_wall(boy.x):
-            print('boy touch the wall')
+            boy.dir *= -1
+            boy.face_dir *= -1
+            boy.action = (boy.action + 1) % 2
+
         if get_time() - boy.start_time > 5:
             boy.state_machine.add_event(('TIME_OUT', 0))
 
