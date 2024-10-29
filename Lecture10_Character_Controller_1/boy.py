@@ -95,11 +95,22 @@ class Run:
 class AutoRun:
     @staticmethod
     def enter(boy, e):
+        if boy.face_dir == 1:
+            boy.dir = 1
+            boy.action = 1
+        if boy.face_dir == -1:
+            boy.dir = -1
+            boy.action = 0
+
+        boy.frame = 0
         boy.start_time = get_time()
 
     @staticmethod
     def exit(boy, e):
-        pass
+        if boy.face_dir == 1:
+            boy.action = 3
+        if boy.face_dir == -1:
+            boy.action = 2
 
     @staticmethod
     def do(boy):
