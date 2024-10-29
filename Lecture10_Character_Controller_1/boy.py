@@ -127,7 +127,7 @@ class Boy:
                 Run : { right_down : Idle, left_down : Idle, right_up : Idle, left_up : Idle},
                 Idle : { right_down : Run, left_down : Run, right_up : Run, left_up : Run, time_out : Sleep, a_key_down : AutoRun},
                 Sleep : { right_down : Run, left_down : Run, right_up : Run, left_up : Run, space_down : Idle },
-                AutoRun : {}
+                AutoRun : { right_down : Run, left_down : Run, right_up : Run, left_up : Run, time_out : Idle }
             }
         )
 
