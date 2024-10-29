@@ -4,6 +4,8 @@ from Lecture10_Character_Controller_1.state_machine import left_down, right_up, 
     a_key_down
 from state_machine import StateMachine, time_out, space_down
 
+def touch_wall(x):
+    return x < 0 or x > 800
 
 # 상태를 클래스를 통해서 정의함.
 class Idle:
@@ -116,6 +118,8 @@ class AutoRun:
     def do(boy):
         boy.frame = (boy.frame + 1) % 8
         boy.x += boy.dir * 3
+        if touch_wall(boy.x):
+            print('boy touch the wall')
         if get_time() - boy.start_time > 5:
             boy.state_machine.add_event(('TIME_OUT', 0))
 
